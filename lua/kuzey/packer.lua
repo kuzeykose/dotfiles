@@ -28,6 +28,7 @@ return require('packer').startup(function(use)
     use('nvim-treesitter/playground')
     use('mbbill/undotree')
     use('tpope/vim-fugitive')
+    use('sindrets/diffview.nvim')
 
     use({ "stevearc/conform.nvim" })
     use { 'neovim/nvim-lspconfig' }
