@@ -2,11 +2,11 @@ vim.g.mapleader = " "
 vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
 vim.keymap.set("n", "<leader>f", function()
     local filetype = vim.bo.filetype
-    local clients = vim.lsp.get_active_clients({ bufnr = 0 })
+    local clients = vim.lsp.get_clients({ bufnr = 0 })
     local supports_format = false
 
     for _, client in ipairs(clients) do
-        if client.supports_method("textDocument/formatting") then
+        if client:supports_method("textDocument/formatting") then
             supports_format = true
             break
         end

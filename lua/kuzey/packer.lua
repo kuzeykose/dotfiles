@@ -17,7 +17,7 @@ return require('packer').startup(function(use)
 
     use { 'preservim/nerdcommenter' }
     use({ "lukas-reineke/indent-blankline.nvim" })
-    use({ 'projekt0n/github-nvim-theme' })
+    use({ "ellisonleao/gruvbox.nvim" })
 
     use {
         'nvim-lualine/lualine.nvim',
@@ -30,25 +30,23 @@ return require('packer').startup(function(use)
     use('tpope/vim-fugitive')
 
     use({ "stevearc/conform.nvim" })
+    use { 'neovim/nvim-lspconfig' }
     use {
-        'VonHeikemen/lsp-zero.nvim',
-        branch = 'v2.x',
-        requires = {
-            { 'neovim/nvim-lspconfig' },
-            {
-                'williamboman/mason.nvim',
-                run = function()
-                    pcall(vim.cmd, 'MasonUpdate')
-                end,
-            },
-            { 'williamboman/mason-lspconfig.nvim' },
-
-            -- Autocompletion
-            { 'hrsh7th/nvim-cmp' },     -- Required
-            { 'hrsh7th/cmp-nvim-lsp' }, -- Required
-            { 'L3MON4D3/LuaSnip' },     -- Required
-        }
+        'williamboman/mason.nvim',
+        run = function()
+            pcall(vim.cmd, 'MasonUpdate')
+        end,
     }
+    use { 'williamboman/mason-lspconfig.nvim' }
+
+    -- Autocompletion
+    use { 'hrsh7th/nvim-cmp' }
+    use { 'hrsh7th/cmp-nvim-lsp' }
+    use { 'hrsh7th/cmp-buffer' }
+    use { 'hrsh7th/cmp-path' }
+    use { 'saadparwaiz1/cmp_luasnip' }
+    use { 'hrsh7th/cmp-nvim-lua' }
+    use { 'L3MON4D3/LuaSnip' }
 
     use {
         "windwp/nvim-autopairs",
