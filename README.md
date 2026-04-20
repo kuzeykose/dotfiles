@@ -7,11 +7,12 @@ Personal config files, managed via symlinks from `$HOME`.
 ```
 dotfiles/
 ├── shell/        zshrc, zshenv, profile
-├── git/          gitconfig, gitignore_global
+├── git/          gitconfig, gitignore_global, gitconfig.local.example
 ├── editor/
 │   ├── nvim/     full Neovim config (init.lua, lua/, plugin/, after/)
 │   └── zed/      settings.json, keymap.json
 ├── terminal/     tmux.conf, ghostty.config
+├── Brewfile      Homebrew packages (use with `brew bundle`)
 ├── install.sh    symlink configs into $HOME (idempotent, backs up first)
 └── uninstall.sh  remove symlinks and restore most recent backup
 ```
@@ -38,6 +39,18 @@ in `~/.gitconfig.local` (untracked). This lets the same dotfiles work on a
 personal machine and a work machine with different GitHub accounts.
 
 `install.sh` prints a reminder if `~/.gitconfig.local` is missing.
+
+### Homebrew packages
+
+The `Brewfile` lists core tooling installed via Homebrew. It is not symlinked —
+run it from inside the repo:
+
+```sh
+cd ~/dotfiles
+brew bundle                              # install everything in Brewfile
+brew bundle cleanup --force              # remove anything NOT in Brewfile
+brew bundle dump --file=Brewfile --force # refresh Brewfile from current state
+```
 
 ## Adding a new config
 
