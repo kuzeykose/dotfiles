@@ -1,0 +1,13 @@
+[user]
+	name = Kuzey Kose
+	email = kosekuzey97@gmail.com
+	signingkey = /Users/kuzeykose/.ssh/id_ed25519.pub
+[gpg]
+	format = ssh
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+[http]
+	postBuffer = 524288000

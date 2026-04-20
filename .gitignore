@@ -1,3 +1,17 @@
-# Local logs
+# OS
+.DS_Store
+
+# Secrets (safety net for future additions)
+.env
+.env.*
+.envrc
+.netrc
+*.pem
+*.key
+id_rsa
+id_ed25519
+id_ecdsa
+
+# Editor/runtime logs
 .nvimlog
 .vimlog
