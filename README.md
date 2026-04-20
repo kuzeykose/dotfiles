@@ -38,7 +38,15 @@ The committed `git/gitconfig` has **no `[user]` block**. Instead, it ends with
 in `~/.gitconfig.local` (untracked). This lets the same dotfiles work on a
 personal machine and a work machine with different GitHub accounts.
 
-`install.sh` prints a reminder if `~/.gitconfig.local` is missing.
+On first run, `install.sh` auto-migrates any existing `[user]` block from a
+pre-existing `~/.gitconfig` (name, email, signingkey) into `~/.gitconfig.local`
+before replacing the file. This means on a work machine that already has a
+gitconfig, you don't have to do anything manually — the existing identity is
+preserved.
+
+If no `~/.gitconfig.local` ends up existing after install (e.g. the original
+file had no `[user]` block), `install.sh` prints a reminder with the exact
+command to create one from the template.
 
 ### Homebrew packages
 

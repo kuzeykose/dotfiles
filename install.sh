@@ -65,7 +65,39 @@ link_one() {
   printf '  LINK    %s -> %s\n' "$2" "$1"
 }
 
+# Migrate identity from a pre-existing ~/.gitconfig into ~/.gitconfig.local.
+# Runs before the main loop, while the real file is still in place. Skips if
+# ~/.gitconfig is already a symlink or ~/.gitconfig.local already exists.
+migrate_gitconfig_local() {
+  local src="$HOME/.gitconfig"
+  local local_file="$HOME/.gitconfig.local"
+
+  [ -L "$src" ] && return
+  [ ! -f "$src" ] && return
+  [ -f "$local_file" ] && return
+
+  local name email signingkey
+  name="$(git config --file "$src" --get user.name 2>/dev/null || true)"
+  email="$(git config --file "$src" --get user.email 2>/dev/null || true)"
+  signingkey="$(git config --file "$src" --get user.signingkey 2>/dev/null || true)"
+
+  if [ -z "$name" ] && [ -z "$email" ] && [ -z "$signingkey" ]; then
+    return
+  fi
+
+  {
+    echo "[user]"
+    [ -n "$name" ] && printf '\tname = %s\n' "$name"
+    [ -n "$email" ] && printf '\temail = %s\n' "$email"
+    [ -n "$signingkey" ] && printf '\tsigningkey = %s\n' "$signingkey"
+  } > "$local_file"
+
+  printf '  MIGRATE [user] from ~/.gitconfig -> ~/.gitconfig.local (%s <%s>)\n' \
+    "${name:-?}" "${email:-?}"
+}
+
 printf 'Installing dotfiles from %s\n' "$DOTFILES_DIR"
+migrate_gitconfig_local
 for entry in "${MANIFEST[@]}"; do
   link_one "${entry%%:*}" "${entry##*:}"
 done
