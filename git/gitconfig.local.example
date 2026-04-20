@@ -1,0 +1,17 @@
+# Template for ~/.gitconfig.local — machine-specific git identity.
+#
+# The committed gitconfig has NO [user] block. Git reads this file last
+# (via [include] in the main gitconfig), so what you put here defines
+# your identity on THIS machine.
+#
+# Setup on a new machine:
+#
+#   cp ~/dotfiles/git/gitconfig.local.example ~/.gitconfig.local
+#   $EDITOR ~/.gitconfig.local
+#
+# Uncomment and fill in the [user] block below. The real file at
+# ~/.gitconfig.local is NOT tracked by the dotfiles repo.
+
+# [user]
+#     name = Your Name
+#     email = you@example.com

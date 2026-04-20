@@ -22,11 +22,22 @@ dotfiles/
 git clone <this-repo-url> ~/dotfiles
 cd ~/dotfiles
 ./install.sh
+cp git/gitconfig.local.example ~/.gitconfig.local
+$EDITOR ~/.gitconfig.local   # fill in name + email for this machine
 ```
 
 Existing files at target paths are moved to `~/.dotfiles_backup/<timestamp>/`
 before being replaced with symlinks. Running `install.sh` again is safe — it
 reports `OK` for links that are already correct.
+
+### Machine-specific git identity
+
+The committed `git/gitconfig` has **no `[user]` block**. Instead, it ends with
+`[include] path = ~/.gitconfig.local`, so each machine sets its own identity
+in `~/.gitconfig.local` (untracked). This lets the same dotfiles work on a
+personal machine and a work machine with different GitHub accounts.
+
+`install.sh` prints a reminder if `~/.gitconfig.local` is missing.
 
 ## Adding a new config
 

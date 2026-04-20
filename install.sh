@@ -75,4 +75,12 @@ if [ "$backup_made" -eq 1 ]; then
 else
   printf '\nNo backups needed.\n'
 fi
+
+if [ ! -f "$HOME/.gitconfig.local" ] && [ -f "$DOTFILES_DIR/git/gitconfig.local.example" ]; then
+  printf '\nNOTE: no ~/.gitconfig.local found.\n'
+  printf 'Set your git identity on this machine:\n'
+  printf '  cp %s/git/gitconfig.local.example ~/.gitconfig.local\n' "$DOTFILES_DIR"
+  printf '  $EDITOR ~/.gitconfig.local\n'
+fi
+
 printf 'Done.\n'

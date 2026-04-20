@@ -1,6 +1,3 @@
-[user]
-	name = Kuzey Kose
-	email = kosekuzey97@gmail.com
 [filter "lfs"]
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
@@ -8,3 +5,8 @@
 	required = true
 [http]
 	postBuffer = 524288000
+# Machine-specific identity (name, email, signing, etc.) lives in
+# ~/.gitconfig.local and is NOT tracked here. See gitconfig.local.example
+# for the template and setup instructions.
+[include]
+	path = ~/.gitconfig.local
