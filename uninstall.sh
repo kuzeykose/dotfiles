@@ -16,6 +16,7 @@ MANIFEST=(
   "editor/nvim:.config/nvim"
   "editor/zed/settings.json:.config/zed/settings.json"
   "editor/zed/keymap.json:.config/zed/keymap.json"
+  "terminal/tmux.conf:.tmux.conf"
   "ssh/config:.ssh/config"
 )
 
