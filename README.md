@@ -11,7 +11,7 @@ dotfiles/
 ├── editor/
 │   ├── nvim/     full Neovim config (init.lua, lua/, plugin/, after/)
 │   └── zed/      settings.json, keymap.json
-├── ssh/          config (keys are never tracked)
+├── terminal/     tmux.conf
 ├── install.sh    symlink configs into $HOME (idempotent, backs up first)
 └── uninstall.sh  remove symlinks and restore most recent backup
 ```
