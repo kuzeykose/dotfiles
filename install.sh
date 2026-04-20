@@ -21,6 +21,7 @@ MANIFEST=(
   "editor/zed/settings.json:.config/zed/settings.json"
   "editor/zed/keymap.json:.config/zed/keymap.json"
   "terminal/tmux.conf:.tmux.conf"
+  "terminal/ghostty.config:.config/ghostty/config"
 )
 
 backup_made=0
