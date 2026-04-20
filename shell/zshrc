@@ -75,7 +75,3 @@ plugins=(git)
 
 # History timestamp format
 # HIST_STAMPS="yyyy-mm-dd"
-
-
-# Added by Antigravity
-[ -d "$HOME/.antigravity/antigravity/bin" ] && export PATH="$HOME/.antigravity/antigravity/bin:$PATH"
